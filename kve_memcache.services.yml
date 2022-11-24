@@ -1,0 +1,10 @@
+parameters:
+  factory.keyvalue.expirable:
+    # Set the Memcache key-value expirable store as the default.
+    # @see https://www.drupal.org/project/drupal/issues/2769955
+    keyvalue_expirable_default: keyvalue.expirable.memcache
+
+services:
+  keyvalue.expirable.memcache:
+    class: Drupal\kve_memcache\KeyValueStore\KeyValueExpirableFactory
+    arguments: ['@memcache.factory','@serialization.phpserialize']
